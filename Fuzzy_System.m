@@ -1,0 +1,167 @@
+disp('## Program 7: Fuzzy Logic System');
+
+fsys = newfis('Projectile');
+
+% For 1st Input(Target Range):
+
+fsys.input(1).name = 'distance';
+fsys.input(1).range = [0 7000];
+fsys.input(1).mf(1).name = '500';fsys.input(1).mf(1).type = 'trimf';fsys.input(1).mf(1).params = [0 500 1000];
+fsys.input(1).mf(2).name = '1000';fsys.input(1).mf(2).type = 'trimf';fsys.input(1).mf(2).params = [500  1000 1500];
+fsys.input(1).mf(3).name = '1500';fsys.input(1).mf(3).type = 'trimf';fsys.input(1).mf(3).params = [1000 1500 2000];
+fsys.input(1).mf(4).name = '2000';fsys.input(1).mf(4).type = 'trimf';fsys.input(1).mf(4).params = [1500 2000 2500];
+fsys.input(1).mf(5).name = '2500';fsys.input(1).mf(5).type = 'trimf';fsys.input(1).mf(5).params = [2000 2500 3000];
+fsys.input(1).mf(6).name = '3000';fsys.input(1).mf(6).type = 'trimf';fsys.input(1).mf(6).params = [2500 3000 3500];
+fsys.input(1).mf(7).name = '3500';fsys.input(1).mf(7).type = 'trimf';fsys.input(1).mf(7).params = [3000 3500 4000];
+fsys.input(1).mf(8).name = '4000';fsys.input(1).mf(8).type = 'trimf';fsys.input(1).mf(8).params = [3500 4000 4500];
+fsys.input(1).mf(9).name = '4500';fsys.input(1).mf(9).type = 'trimf';fsys.input(1).mf(9).params = [4000 4500 5000];
+fsys.input(1).mf(10).name = '5000';fsys.input(1).mf(10).type = 'trimf';fsys.input(1).mf(10).params = [4500 5000 5500];
+fsys.input(1).mf(11).name = '5500';fsys.input(1).mf(11).type = 'trimf';fsys.input(1).mf(11).params = [5000 5500 6000];
+fsys.input(1).mf(12).name = '6000';fsys.input(1).mf(12).type = 'trimf';fsys.input(1).mf(12).params = [5500 6000 6500];
+fsys.input(1).mf(13).name = '6500';fsys.input(1).mf(13).type = 'trimf';fsys.input(1).mf(13).params = [6000 6500 7000];
+fsys.input(1).mf(14).name = '7000';fsys.input(1).mf(14).type = 'trimf';fsys.input(1).mf(14).params = [6500 7000 7000];
+
+% For 2nd Input(Wind Velocity):
+
+fsys.input(2).name = 'wind';
+fsys.input(2).range = [0 20];
+fsys.input(2).mf(1).name = '1knot';fsys.input(2).mf(1).type = 'trimf';fsys.input(2).mf(1).params = [0 1 5];
+fsys.input(2).mf(2).name = '5knots';fsys.input(2).mf(2).type = 'trimf';fsys.input(2).mf(2).params = [1 5 10];
+fsys.input(2).mf(3).name = '10knots';fsys.input(2).mf(3).type = 'trimf';fsys.input(2).mf(3).params = [5 10 15];
+fsys.input(2).mf(4).name = '15knots';fsys.input(2).mf(4).type = 'trimf';fsys.input(2).mf(4).params = [10 15 20];
+fsys.input(2).mf(5).name = '20knots';fsys.input(2).mf(5).type = 'trimf';fsys.input(2).mf(5).params = [15 20 20];
+
+% For Output(Angle Of Firing):
+
+fsys.output(1).name = 'elevation';
+fsys.output(1).range = [0 40];
+fsys.output(1).mf(1).name = '1.044';fsys.output(1).mf(1).type = 'trimf';fsys.output(1).mf(1).params = [0 1.044 2.159];
+fsys.output(1).mf(2).name = '2.159';fsys.output(1).mf(2).type = 'trimf';fsys.output(1).mf(2).params = [1.044 2.159 3.377];
+fsys.output(1).mf(3).name = '3.377';fsys.output(1).mf(3).type = 'trimf';fsys.output(1).mf(3).params = [2.159 3.377 4.688];
+fsys.output(1).mf(4).name = '4.688';fsys.output(1).mf(4).type = 'trimf';fsys.output(1).mf(4).params = [3.377 4.688 6.114];
+fsys.output(1).mf(5).name = '6.114';fsys.output(1).mf(5).type = 'trimf';fsys.output(1).mf(5).params = [4.688 6.114 7.687];
+fsys.output(1).mf(6).name = '7.687';fsys.output(1).mf(6).type = 'trimf';fsys.output(1).mf(6).params = [6.114 7.687 9.427];
+fsys.output(1).mf(7).name = '9.427';fsys.output(1).mf(7).type = 'trimf';fsys.output(1).mf(7).params = [7.687 9.427 11.347];
+fsys.output(1).mf(8).name = '11.347';fsys.output(1).mf(8).type = 'trimf';fsys.output(1).mf(8).params = [9.427 11.347 13.507];
+fsys.output(1).mf(9).name = '13.507';fsys.output(1).mf(9).type = 'trimf';fsys.output(1).mf(9).params = [11.347 13.507 15.980];
+fsys.output(1).mf(10).name = '15.980';fsys.output(1).mf(10).type = 'trimf';fsys.output(1).mf(10).params = [13.507 15.980 18.877];
+fsys.output(1).mf(11).name = '18.877';fsys.output(1).mf(11).type = 'trimf';fsys.output(1).mf(11).params = [15.980 18.877 22.411];
+fsys.output(1).mf(12).name = '22.411';fsys.output(1).mf(12).type = 'trimf';fsys.output(1).mf(12).params = [18.877 22.411 27.184];
+fsys.output(1).mf(13).name = '27.184';fsys.output(1).mf(13).type = 'trimf';fsys.output(1).mf(13).params = [22.411 27.184 37.510];
+fsys.output(1).mf(14).name = '37.510';fsys.output(1).mf(14).type = 'trimf';fsys.output(1).mf(14).params = [28.344 37.220 37.220];
+fsys.output(1).mf(15).name = 'mf15';fsys.output(1).mf(15).type = 'trimf';fsys.output(1).mf(15).params = [37.603 41.623 47.123];
+fsys.output(1).mf(16).name = '5knots_5500';fsys.output(1).mf(16).type = 'trimf';fsys.output(1).mf(16).params = [15.930 18.807 22.321];
+fsys.output(1).mf(17).name = '5knots_6000';fsys.output(1).mf(17).type = 'trimf';fsys.output(1).mf(17).params = [18.807 22.321 27.004];
+fsys.output(1).mf(18).name = '5knots_6500';fsys.output(1).mf(18).type = 'trimf';fsys.output(1).mf(18).params = [22.321 27.004 36.250];
+fsys.output(1).mf(19).name = '5knots_7000';fsys.output(1).mf(19).type = 'trimf';fsys.output(1).mf(19).params = [27.004 36.250 36.250];
+fsys.output(1).mf(20).name = '10knots_2500';fsys.output(1).mf(20).type = 'trimf';fsys.output(1).mf(20).params = [4.688 6.114 7.667];
+fsys.output(1).mf(21).name = '10knots_3000';fsys.output(1).mf(21).type = 'trimf';fsys.output(1).mf(21).params = [6.114 7.667 9.387];
+fsys.output(1).mf(22).name = '10knots_3500';fsys.output(1).mf(22).type = 'trimf';fsys.output(1).mf(22).params = [7.667 9.387 11.297];
+fsys.output(1).mf(23).name = '10knots_4000';fsys.output(1).mf(23).type = 'trimf';fsys.output(1).mf(23).params = [9.387 11.297 13.447];
+fsys.output(1).mf(24).name = '10knots_4500';fsys.output(1).mf(24).type = 'trimf';fsys.output(1).mf(24).params = [11.297 13.447 15.880];
+fsys.output(1).mf(25).name = '10knots_5000';fsys.output(1).mf(25).type = 'trimf';fsys.output(1).mf(25).params = [13.447 15.880 18.727];
+fsys.output(1).mf(26).name = '10knots_5500';fsys.output(1).mf(26).type = 'trimf';fsys.output(1).mf(26).params = [15.880 18.727 22.191];
+fsys.output(1).mf(27).name = '10knots_6000';fsys.output(1).mf(27).type = 'trimf';fsys.output(1).mf(27).params = [18.727 22.191 26.774];
+fsys.output(1).mf(28).name = '10knots_6000';fsys.output(1).mf(28).type = 'trimf';fsys.output(1).mf(28).params = [18.727 22.191 26.774];
+fsys.output(1).mf(29).name = '10knots_7000';fsys.output(1).mf(29).type = 'trimf';fsys.output(1).mf(29).params = [26.774 35.190 35.190];
+fsys.output(1).mf(30).name = '10knots_6500';fsys.output(1).mf(30).type = 'trimf';fsys.output(1).mf(30).params = [22.191 26.774 35.190];
+fsys.output(1).mf(31).name = '15knots_2000';fsys.output(1).mf(31).type = 'trimf';fsys.output(1).mf(31).params = [3.367 4.678 6.104];
+fsys.output(1).mf(32).name = '15knots_2500';fsys.output(1).mf(32).type = 'trimf';fsys.output(1).mf(32).params = [4.678 6.104 7.667];
+fsys.output(1).mf(33).name = '15knots_3000';fsys.output(1).mf(33).type = 'trimf';fsys.output(1).mf(33).params = [6.104 7.667 9.367];
+fsys.output(1).mf(34).name = '15knots_3500';fsys.output(1).mf(34).type = 'trimf';fsys.output(1).mf(34).params = [7.667 9.367 11.267];
+fsys.output(1).mf(35).name = '15knots_4000';fsys.output(1).mf(35).type = 'trimf';fsys.output(1).mf(35).params = [9.367 11.267 13.407];
+fsys.output(1).mf(36).name = '15knots_4500';fsys.output(1).mf(36).type = 'trimf';fsys.output(1).mf(36).params = [11.267 13.407 15.830];
+fsys.output(1).mf(37).name = '15knots_5000';fsys.output(1).mf(37).type = 'trimf';fsys.output(1).mf(37).params = [13.407 15.830 18.657];
+fsys.output(1).mf(38).name = '15knots_5500';fsys.output(1).mf(38).type = 'trimf';fsys.output(1).mf(38).params = [15.830 18.657 22.081];
+fsys.output(1).mf(39).name = '15knots_6000';fsys.output(1).mf(39).type = 'trimf';fsys.output(1).mf(39).params = [18.657 22.081 26.564];
+fsys.output(1).mf(40).name = '15knots_6500';fsys.output(1).mf(40).type = 'trimf';fsys.output(1).mf(40).params = [22.081 26.564 34.390];
+fsys.output(1).mf(41).name = '15knots_7000';fsys.output(1).mf(41).type = 'trimf';fsys.output(1).mf(41).params = [26.564 34.390 34.390];
+fsys.output(1).mf(42).name = '20knots_1000';fsys.output(1).mf(42).type = 'trimf';fsys.output(1).mf(42).params = [1.044 2.159 3.367];
+fsys.output(1).mf(43).name = '20knots_1500';fsys.output(1).mf(43).type = 'trimf';fsys.output(1).mf(43).params = [2.159 3.367 4.668];
+fsys.output(1).mf(44).name = '10knots_2000';fsys.output(1).mf(44).type = 'trimf';fsys.output(1).mf(44).params = [3.377 4.688 6.114];
+fsys.output(1).mf(45).name = '10knots_2500';fsys.output(1).mf(45).type = 'trimf';fsys.output(1).mf(45).params = [4.688 6.114 7.667];
+fsys.output(1).mf(46).name = '20knots_3000';fsys.output(1).mf(46).type = 'trimf';fsys.output(1).mf(46).params = [6.094 7.647 9.357];
+fsys.output(1).mf(47).name = '20knots_3500';fsys.output(1).mf(47).type = 'trimf';fsys.output(1).mf(47).params = [7.647 9.357 11.257];
+fsys.output(1).mf(48).name = '20knots_4000';fsys.output(1).mf(48).type = 'trimf';fsys.output(1).mf(48).params = [9.357 11.257 13.367];
+fsys.output(1).mf(49).name = '20knots_4500';fsys.output(1).mf(49).type = 'trimf';fsys.output(1).mf(49).params = [11.257 13.367 15.780];
+fsys.output(1).mf(50).name = '20knots_5000';fsys.output(1).mf(50).type = 'trimf';fsys.output(1).mf(50).params = [13.367 15.780 18.577];
+fsys.output(1).mf(51).name = '20knots_5500';fsys.output(1).mf(51).type = 'trimf';fsys.output(1).mf(51).params = [15.780 18.577 21.961];
+fsys.output(1).mf(52).name = '20knots_6000';fsys.output(1).mf(52).type = 'trimf';fsys.output(1).mf(52).params = [18.577 21.961 26.354];
+fsys.output(1).mf(53).name = '20knots_6500';fsys.output(1).mf(53).type = 'trimf';fsys.output(1).mf(53).params = [21.961 26.354 33.710];
+fsys.output(1).mf(54).name = '20knots_7000';fsys.output(1).mf(54).type = 'trimf';fsys.output(1).mf(54).params = [26.354 33.710 33.710];
+
+% Rules For System:
+
+fsys.rule(1).antecedent = [1 1];fsys.rule(1).consequent = [1];fsys.rule(1).weight = 1;fsys.rule(1).connection = 1;
+fsys.rule(2).antecedent = [2 1];fsys.rule(2).consequent = [2];fsys.rule(2).weight = 1;fsys.rule(2).connection = 1;
+fsys.rule(3).antecedent = [3 1];fsys.rule(3).consequent = [3];fsys.rule(3).weight = 1;fsys.rule(3).connection = 1;
+fsys.rule(4).antecedent = [4 1];fsys.rule(4).consequent = [4];fsys.rule(4).weight = 1;fsys.rule(4).connection = 1;
+fsys.rule(5).antecedent = [5 1];fsys.rule(5).consequent = [5];fsys.rule(5).weight = 1;fsys.rule(5).connection = 1;
+fsys.rule(6).antecedent = [6 1];fsys.rule(6).consequent = [6];fsys.rule(6).weight = 1;fsys.rule(6).connection = 1;
+fsys.rule(7).antecedent = [7 1];fsys.rule(7).consequent = [7];fsys.rule(7).weight = 1;fsys.rule(7).connection = 1;
+fsys.rule(8).antecedent = [8 1];fsys.rule(8).consequent = [8];fsys.rule(8).weight = 1;fsys.rule(8).connection = 1;
+fsys.rule(9).antecedent = [9 1];fsys.rule(9).consequent = [9];fsys.rule(9).weight = 1;fsys.rule(9).connection = 1;
+fsys.rule(10).antecedent = [10 1];fsys.rule(10).consequent = [10];fsys.rule(10).weight = 1;fsys.rule(10).connection = 1;
+fsys.rule(11).antecedent = [11 1];fsys.rule(11).consequent = [11];fsys.rule(11).weight = 1;fsys.rule(11).connection = 1;
+fsys.rule(12).antecedent = [12 1];fsys.rule(12).consequent = [12];fsys.rule(12).weight = 1;fsys.rule(12).connection = 1;
+fsys.rule(13).antecedent = [13 1];fsys.rule(13).consequent = [13];fsys.rule(13).weight = 1;fsys.rule(13).connection = 1;
+fsys.rule(14).antecedent = [14 1];fsys.rule(14).consequent = [14];fsys.rule(14).weight = 1;fsys.rule(14).connection = 1;
+fsys.rule(15).antecedent = [14 1];fsys.rule(15).consequent = [15];fsys.rule(15).weight = 1;fsys.rule(15).connection = 1;
+fsys.rule(16).antecedent = [1 2];fsys.rule(16).consequent = [1];fsys.rule(16).weight = 1;fsys.rule(16).connection = 1;
+fsys.rule(17).antecedent = [2 2];fsys.rule(17).consequent = [2];fsys.rule(17).weight = 1;fsys.rule(17).connection = 1;
+fsys.rule(18).antecedent = [3 2];fsys.rule(18).consequent = [3];fsys.rule(18).weight = 1;fsys.rule(18).connection = 1;
+fsys.rule(19).antecedent = [4 2];fsys.rule(19).consequent = [4];fsys.rule(19).weight = 1;fsys.rule(19).connection = 1;
+fsys.rule(20).antecedent = [5 2];fsys.rule(20).consequent = [5];fsys.rule(20).weight = 1;fsys.rule(20).connection = 1;
+fsys.rule(21).antecedent = [6 2];fsys.rule(21).consequent = [6];fsys.rule(21).weight = 1;fsys.rule(21).connection = 1;
+fsys.rule(22).antecedent = [7 2];fsys.rule(22).consequent = [7];fsys.rule(22).weight = 1;fsys.rule(22).connection = 1;
+fsys.rule(23).antecedent = [8 2];fsys.rule(23).consequent = [8];fsys.rule(23).weight = 1;fsys.rule(23).connection = 1;
+fsys.rule(24).antecedent = [9 2];fsys.rule(24).consequent = [9];fsys.rule(24).weight = 1;fsys.rule(24).connection = 1;
+fsys.rule(25).antecedent = [10 2];fsys.rule(25).consequent = [10];fsys.rule(25).weight = 1;fsys.rule(25).connection = 1;
+fsys.rule(26).antecedent = [11 2];fsys.rule(26).consequent = [16];fsys.rule(26).weight = 1;fsys.rule(26).connection = 1;
+fsys.rule(27).antecedent = [12 2];fsys.rule(27).consequent = [17];fsys.rule(27).weight = 1;fsys.rule(27).connection = 1;
+fsys.rule(28).antecedent = [13 2];fsys.rule(28).consequent = [18];fsys.rule(28).weight = 1;fsys.rule(28).connection = 1;
+fsys.rule(29).antecedent = [14 2];fsys.rule(29).consequent = [19];fsys.rule(29).weight = 1;fsys.rule(29).connection = 1;
+fsys.rule(30).antecedent = [1 3];fsys.rule(30).consequent = [1];fsys.rule(30).weight = 1;fsys.rule(30).connection = 1;
+fsys.rule(31).antecedent = [2 3];fsys.rule(31).consequent = [2];fsys.rule(31).weight = 1;fsys.rule(31).connection = 1;
+fsys.rule(32).antecedent = [3 3];fsys.rule(32).consequent = [3];fsys.rule(32).weight = 1;fsys.rule(32).connection = 1;
+fsys.rule(33).antecedent = [4 3];fsys.rule(33).consequent = [4];fsys.rule(33).weight = 1;fsys.rule(33).connection = 1;
+fsys.rule(34).antecedent = [5 3];fsys.rule(34).consequent = [20];fsys.rule(34).weight = 1;fsys.rule(34).connection = 1;
+fsys.rule(35).antecedent = [6 3];fsys.rule(35).consequent = [21];fsys.rule(35).weight = 1;fsys.rule(35).connection = 1;
+fsys.rule(36).antecedent = [7 3];fsys.rule(36).consequent = [22];fsys.rule(36).weight = 1;fsys.rule(36).connection = 1;
+fsys.rule(37).antecedent = [8 3];fsys.rule(37).consequent = [23];fsys.rule(37).weight = 1;fsys.rule(37).connection = 1;
+fsys.rule(38).antecedent = [9 3];fsys.rule(38).consequent = [24];fsys.rule(38).weight = 1;fsys.rule(38).connection = 1;
+fsys.rule(39).antecedent = [10 3];fsys.rule(39).consequent = [25];fsys.rule(39).weight = 1;fsys.rule(39).connection = 1;
+fsys.rule(40).antecedent = [11 3];fsys.rule(40).consequent = [26];fsys.rule(40).weight = 1;fsys.rule(40).connection = 1;
+fsys.rule(41).antecedent = [12 3];fsys.rule(41).consequent = [27];fsys.rule(41).weight = 1;fsys.rule(41).connection = 1;
+fsys.rule(42).antecedent = [13 3];fsys.rule(42).consequent = [30];fsys.rule(42).weight = 1;fsys.rule(42).connection = 1;
+fsys.rule(43).antecedent = [14 3];fsys.rule(43).consequent = [29];fsys.rule(43).weight = 1;fsys.rule(43).connection = 1;
+fsys.rule(44).antecedent = [1 4];fsys.rule(44).consequent = [1];fsys.rule(44).weight = 1;fsys.rule(44).connection = 1;
+fsys.rule(45).antecedent = [2 4];fsys.rule(45).consequent = [2];fsys.rule(45).weight = 1;fsys.rule(45).connection = 1;
+fsys.rule(46).antecedent = [3 4];fsys.rule(46).consequent = [3];fsys.rule(46).weight = 1;fsys.rule(46).connection = 1;
+fsys.rule(47).antecedent = [4 4];fsys.rule(47).consequent = [31];fsys.rule(47).weight = 1;fsys.rule(47).connection = 1;
+fsys.rule(48).antecedent = [5 4];fsys.rule(48).consequent = [32];fsys.rule(48).weight = 1;fsys.rule(48).connection = 1;
+fsys.rule(49).antecedent = [6 4];fsys.rule(49).consequent = [33];fsys.rule(49).weight = 1;fsys.rule(49).connection = 1;
+fsys.rule(50).antecedent = [7 4];fsys.rule(50).consequent = [34];fsys.rule(50).weight = 1;fsys.rule(50).connection = 1;
+fsys.rule(51).antecedent = [8 4];fsys.rule(51).consequent = [35];fsys.rule(51).weight = 1;fsys.rule(51).connection = 1;
+fsys.rule(52).antecedent = [9 4];fsys.rule(52).consequent = [36];fsys.rule(52).weight = 1;fsys.rule(52).connection = 1;
+fsys.rule(53).antecedent = [10 4];fsys.rule(53).consequent = [37];fsys.rule(53).weight = 1;fsys.rule(53).connection = 1;
+fsys.rule(54).antecedent = [11 4];fsys.rule(54).consequent = [38];fsys.rule(54).weight = 1;fsys.rule(54).connection = 1;
+fsys.rule(55).antecedent = [12 4];fsys.rule(55).consequent = [39];fsys.rule(55).weight = 1;fsys.rule(55).connection = 1;
+fsys.rule(56).antecedent = [13 4];fsys.rule(56).consequent = [40];fsys.rule(56).weight = 1;fsys.rule(56).connection = 1;
+fsys.rule(57).antecedent = [14 4];fsys.rule(57).consequent = [41];fsys.rule(57).weight = 1;fsys.rule(57).connection = 1;
+fsys.rule(58).antecedent = [1 5];fsys.rule(58).consequent = [1];fsys.rule(58).weight = 1;fsys.rule(58).connection = 1;
+fsys.rule(59).antecedent = [2 5];fsys.rule(59).consequent = [42];fsys.rule(59).weight = 1;fsys.rule(59).connection = 1;
+fsys.rule(60).antecedent = [3 5];fsys.rule(60).consequent = [43];fsys.rule(60).weight = 1;fsys.rule(60).connection = 1;
+fsys.rule(61).antecedent = [4 5];fsys.rule(61).consequent = [44];fsys.rule(61).weight = 1;fsys.rule(61).connection = 1;
+fsys.rule(62).antecedent = [5 5];fsys.rule(62).consequent = [45];fsys.rule(62).weight = 1;fsys.rule(62).connection = 1;
+fsys.rule(63).antecedent = [6 5];fsys.rule(63).consequent = [46];fsys.rule(63).weight = 1;fsys.rule(63).connection = 1;
+fsys.rule(64).antecedent = [7 5];fsys.rule(64).consequent = [47];fsys.rule(64).weight = 1;fsys.rule(64).connection = 1;
+fsys.rule(65).antecedent = [8 5];fsys.rule(65).consequent = [48];fsys.rule(65).weight = 1;fsys.rule(65).connection = 1;
+fsys.rule(66).antecedent = [9 5];fsys.rule(66).consequent = [49];fsys.rule(66).weight = 1;fsys.rule(66).connection = 1;
+fsys.rule(67).antecedent = [10 5];fsys.rule(67).consequent = [50];fsys.rule(67).weight = 1;fsys.rule(67).connection = 1;
+fsys.rule(68).antecedent = [11 5];fsys.rule(68).consequent = [51];fsys.rule(68).weight = 1;fsys.rule(68).connection = 1;
+fsys.rule(69).antecedent = [12 5];fsys.rule(69).consequent = [52];fsys.rule(69).weight = 1;fsys.rule(69).connection = 1;
+fsys.rule(70).antecedent = [13 5];fsys.rule(70).consequent = [53];fsys.rule(70).weight = 1;fsys.rule(70).connection = 1;
+fsys.rule(71).antecedent = [14 5];fsys.rule(71).consequent = [54];fsys.rule(71).weight = 1;fsys.rule(71).connection = 1;
+
+writefis(fsys,'Fuzzy_Sys');  % Creates FIS file.
